@@ -7,10 +7,6 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
-  req.body.nowShowing = !!req.body.nowShowing
-  if (req.body.cast) {
-    req.body.cast = req.body.cast.split(', ')
-  }
   for (let key in req.body) {
 	  if (req.body[key] === '') delete req.body[key]
 	}
@@ -19,8 +15,8 @@ function create(req, res) {
     res.redirect('/flights')
   })
   .catch(err => {
-    console.log(err)
-    res.redirect('/flights')
+    console.log(err, 'add flight not working')
+    res.redirect('/')
   })
 }
 

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const flightSchema = new Schema({
     airline: {
         type: String,
-        enum: ['American', 'Southwest', 'United']
+        enum: ['American', 'Southwest', 'United', 'Delta']
     },
     airport: {
         type: String,
@@ -22,7 +22,7 @@ const flightSchema = new Schema({
         default: function() {
             return new Date().getFullYear() //need to make 1 year from current year
         }} 
-    }, {
+}, {
     timestamps: true
 })
 
