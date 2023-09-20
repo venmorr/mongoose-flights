@@ -43,16 +43,6 @@
       type="text" 
       name="row" 
       id="row-input">
-
-    <label for="seat-select">Seat:</label>
-    <select name="seat" id="seat-select">
-      <option>A</option>
-      <option>B</option>
-      <option>C</option>
-      <option>D</option>
-      <option>E</option>
-      <option>F</option>
-    </select>
     
     <button type="submit">Add Ticket</button>
   </form>
@@ -64,7 +54,6 @@
           <th>Passenger Name</th>
           <th>Ticket Number</th>
           <th>Row</th>
-          <th>Seat</th>
 					<th></th>
         </tr>
       </thead>
@@ -77,7 +66,6 @@
             <td><%= ticket.passengerName %></td>
             <td><%= ticket.ticketNo %></td>
             <td><%= ticket.row %></td>
-            <td><%= ticket.seat %></td>
 						<td>
               <form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>?_method=DELETE" method="POST">
                 <button>X</button>

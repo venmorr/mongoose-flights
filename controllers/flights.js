@@ -110,6 +110,25 @@ function createTicket(req, res) {
   })
 }
 
+function addToMenu(req, res) {
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    flight.menu.push(req.body.mealId)
+    flight.save()
+		.then(() => {
+		  res.redirect(`/flights/${flight._id}`)
+		})
+    .catch(err => {
+      console.log(err)
+      res.redirect("/flights")
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/flights")
+  })
+}
+
 function deleteTicket(req, res) {
   //find the movie
   Flight.findById(req.params.flightId)
@@ -134,5 +153,6 @@ export {
   edit,
   update,
   createTicket,
+  addToMenu,
   deleteTicket,
 }
