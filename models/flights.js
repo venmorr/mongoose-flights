@@ -13,7 +13,7 @@ const ticketSchema = new Schema({
     },
     seat: {
         letter: String,
-        enum: ['A', 'B', 'C', 'D', 'E', 'F'],
+        // enum: ['A', 'B', 'C', 'D', 'E', 'F'],
     }
   }, {
     timestamps: true

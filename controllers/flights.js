@@ -91,6 +91,40 @@ function update(req, res) {
   })
 }
 
+function createTicket(req, res) {
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function deleteTicket(req, res) {
+  //find the movie
+  Flight.findById(req.params.flightId)
+  .then(flight => {
+    //find and delete ticket
+    flight.tickets.id(req.params.ticketId).deleteOne()
+    //save the flight
+    flight.save()
+    .then(() => {
+      //redirect back to flight show view
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+}
+
 export {
   newFlight as new,
   create,
@@ -99,4 +133,6 @@ export {
   deleteFlight as delete,
   edit,
   update,
+  createTicket,
+  deleteTicket,
 }
