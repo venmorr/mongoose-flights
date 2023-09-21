@@ -15,9 +15,9 @@ const ticketSchema = new Schema({
         letter: String,
         // enum: ['A', 'B', 'C', 'D', 'E', 'F'],
     }
-  }, {
+}, {
     timestamps: true
-  })
+})
 
 const flightSchema = new Schema({
     airline: {
@@ -39,6 +39,7 @@ const flightSchema = new Schema({
         default: function() {
             return new Date().getFullYear() + 1 
         }},
+    menu: [{type: Schema.Types.ObjectId, ref: 'Meal'}],
     tickets: [ticketSchema],
 }, {
     timestamps: true
@@ -47,5 +48,5 @@ const flightSchema = new Schema({
 const Flight = mongoose.model('Flight', flightSchema)
 
 export {
-  Flight
+    Flight
 }
